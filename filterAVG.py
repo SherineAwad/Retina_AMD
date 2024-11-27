@@ -9,8 +9,9 @@ def filterAvg(Expfile):
         if "RNA.RPE" in line: 
              continue
         records = (line.strip()).split(",")
-        if (abs(float(records[3])) > 2) : 
-            print (records[0].strip('"')) 
+        #if (abs(float(records[3])) > 1) : 
+        if (abs(float(records[3])) > 0.5) : 
+           print (records[0].strip('"')) 
     return 
 
 def main():

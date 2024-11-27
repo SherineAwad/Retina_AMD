@@ -9,7 +9,7 @@ def filterDGE(dgefile):
         if "p_val_adj" in line: 
              continue
         records = (line.strip()).split(",")
-        if (float(records[5]) < 0.05) and (abs(float(records[2])) > 2) : 
+        if (float(records[5]) < 0.05) and (abs(float(records[2])) > 1) : 
                 print (records[0].strip('"')) 
     return 
 
