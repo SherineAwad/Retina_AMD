@@ -61,7 +61,7 @@ myObject <- RenameIdents(
    "4"  = "Microglia",
    "17"  = "Microglia",
    "25"  = "Microglia",
-
+   
    "15" = "Neutrophil", 
    "30" = "Neutrophil" )
 

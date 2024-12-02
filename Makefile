@@ -7,10 +7,9 @@ OUTPUT =/nfs/turbo/umms-thahoang/sherine/RPE/
 PICARD = /nfs/turbo/umms-thahoang/sherine/tools/picard.jar 
 
 
-
-RPE_AvgExp_allAMD_genes.txt:
+RPE_AvgExp_dAMDGenes.txt:
 	grep 'RPE' RPE_DGE.csv > RPEonlyDGE.csv
 	python filterDGE.py RPEonlyDGE.csv > RPE_DGE_filtered_genes.txt
 	python filterAVG.py RPE_AvgExp.csv > RPE_AvgExp_filterd_genes.txt
-	python overlap.py RPE_DGE_filtered_genes.txt allDryAMDgenes.txt > RPE_DGE_allAMD_genes.txt
-	python overlap.py RPE_AvgExp_filterd_genes.txt allDryAMDgenes.txt > RPE_AvgExp_allAMD_genes.txt
+	python overlap.py RPE_DGE_filtered_genes.txt dAMDGenes.txt  > RPE_DGE_dAMDGenes.txt
+	python overlap.py RPE_AvgExp_filterd_genes.txt dAMDGenes.txt  > RPE_AvgExp_dAMDGenes.txt

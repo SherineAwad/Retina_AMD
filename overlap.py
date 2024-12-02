@@ -10,10 +10,10 @@ def readFile(infile):
         mygenes.append(line.strip('"'))
     return mygenes
 
-def overlapGenes(RPE, Genes):
-    for gene in RPE: 
+def overlapGenes(Exp, Genes):
+    for gene in Exp:
         if gene in Genes: 
-            print(gene.strip())
+            print(gene.strip('\n'))
 
 def main():
     parser = argparse.ArgumentParser()
@@ -22,11 +22,8 @@ def main():
     args = parser.parse_args()
     Expfile = args.Expfile  
     Genesfile =args.Genesfile
-    RPE = readFile(Expfile) 
-    Genes  = readFile(Genesfile) 
-    overlapGenes(RPE, Genes)
+    Exp = readFile(Expfile) 
+    Genes  = readFile(Genesfile)
+    overlapGenes(Exp, Genes)
 if __name__ == '__main__':
     main()
-
-   
-
