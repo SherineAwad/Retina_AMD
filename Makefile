@@ -7,14 +7,23 @@ OUTPUT =/nfs/turbo/umms-thahoang/sherine/RPE/
 PICARD = /nfs/turbo/umms-thahoang/sherine/tools/picard.jar 
 
 
-RPE_AvgExp_dAMDGenesAF500_01.txt:
+Microglia_AvgExp_dAMDGenes.txt:
 	grep 'RPE' RPE_DGE.csv > RPEonlyDGE.csv
 	python filterDGE.py RPEonlyDGE.csv > RPE_DGE_filtered_genes.txt
-	python filterAVG.py RPE_AvgExp.csv > RPE_AvgExp_filterd_gene.txt
-	python overlap.py RPE_DGE_filtered_genes.txt dryAMDAF500_01.txt  > RPE_DGE_dAMDGenesAF500_01.txt
-	python overlap.py RPE_AvgExp_filterd_gene.txt dryAMDAF500_01.txt  > RPE_AvgExp_dAMDGenesAF500_01.txt
+	python filterAVG.py RPE_AvgExp.csv 1 > RPE_AvgExp_filterd_gene.txt
+	python overlap.py RPE_DGE_filtered_genes.txt markers.txt  > RPE_DGE_dAMDGenes.txt
+	python overlap.py RPE_AvgExp_filterd_gene.txt markers.txt  > RPE_AvgExp_dAMDGenes.txt
 
+Tcells_AvgExp_dAMDGenes.txt: 
+	python filterAVG.py RPE_AvgExp.csv 1 > RPE_AvgExp_filterd_gene.txt
+	python overlap.py RPE_AvgExp_filterd_gene.txt markers.txt  > RPE_AvgExp_dAMDGenes.txt
 
+	python filterAVG.py RPE_AvgExp.csv 7 > Microglia_AvgExp_filterd_gene.txt
+	python overlap.py Microglia_AvgExp_filterd_gene.txt markers.txt > Microglia_AvgExp_dAMDGenes.txt 
+
+	python filterAVG.py RPE_AvgExp.csv 4 > Tcells_AvgExp_filterd_gene.txt
+	python overlap.py Tcells_AvgExp_filterd_gene.txt markers.txt > Tcells_AvgExp_dAMDGenes.txt
+	cat Microglia_AvgExp_dAMDGenes.txt RPE_AvgExp_dAMDGenes.txt Tcells_AvgExp_dAMDGenes.txt | sort | uniq > topMarkers.txt 
 RPE_AvgExp_dAMDGenesselected.txt:
 	grep 'RPE' RPE_DGE.csv > RPEonlyDGE.csv
 	python filterDGE.py RPEonlyDGE.csv > RPE_DGE_filtered_genes.txt

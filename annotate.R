@@ -61,7 +61,9 @@ myObject <- RenameIdents(
    "4"  = "Microglia",
    "17"  = "Microglia",
    "25"  = "Microglia",
-   
+    
+   "12" = "Erythrocyte", 
+
    "15" = "Neutrophil", 
    "30" = "Neutrophil" )
 
@@ -71,7 +73,7 @@ saveRDS(myObject, file = myRDS)
 
 figure_name <- ""
 figure_name <- paste(mysample, "_Annotated_UMAP.pdf", sep="")
-pdf(file =figure_name, width =12)
+pdf(file =figure_name, width =8, height=8)
 DimPlot(myObject, reduction = "umap", group.by = "orig.ident",  repel = TRUE) + ggtitle("UMAP")
 DimPlot(myObject, reduction = "umap", label=TRUE, repel = TRUE) + ggtitle("UMAP")
 dev.off()
